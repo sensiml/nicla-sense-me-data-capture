@@ -1,5 +1,7 @@
 .pio/
 .vscode/
+CMakeListsPrivate.txt
+cmake-build-*/
 # Prerequisites
 *.d
 

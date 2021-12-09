@@ -14,7 +14,7 @@
 #if USE_BLE
 #include "ArduinoBLE.h"
 
-const char* nameOfPeripheral = "Nicla Sense ME DCL Endpoint";
+const char* nameOfPeripheral = "Nicla Sense ME";
 const char* uuidOfService    = "16480000-0525-4ad5-b4fb-6dd83f49546b";
 const char* uuidOfConfigChar = "16480001-0525-4ad5-b4fb-6dd83f49546b";
 const char* uuidOfDataChar   = "16480002-0525-4ad5-b4fb-6dd83f49546b";
