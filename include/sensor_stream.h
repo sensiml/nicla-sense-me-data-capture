@@ -10,7 +10,7 @@
 // - ODR_IMU_MAX / ODR_IMU
 
 
-#define USE_BLE 1 //set to 1 to use BLE and 0 to use serial com (tty) port
+#define USE_BLE 0 //set to 1 to use BLE and 0 to use serial com (tty) port
 
 /**
  * Serial Port Settings

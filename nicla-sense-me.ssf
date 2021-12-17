@@ -1,0 +1,128 @@
+{
+    "uuid": "9b982fd9-fa5f-4cce-9e88-d13bd21ade25",
+    "protocol_uuid": "5b2ffd03-7793-4f46-a91b-b515f1e4c837",
+    "device_name": "Nicla Sense ME",
+    "device_manufacturer": "Bosch",
+    "plugin_developer": "Bosch",
+    "documentation_links": [
+        {
+            "title": "SensiML Documentation",
+            "description": "",
+            "link": "https://sensiml.com/documentation/firmware/arduino-nicla-sense-me/arduino-nicla-sense-me.html
+        },
+        {
+            "title": "Arduino Documentation",
+            "description": ""
+            "link": "https://docs.arduino.cc/hardware/nicla-sense-me"
+        }
+    ]
+    "firmware_download_links": [
+        {
+            "title": "GitHub Firmware Repo",
+            "description": "",
+            "link": "https://github.com/sensiml/nicla-sense-me-data-capture"
+        }
+    ],
+    "collection_methods": [
+        {
+            "name": "live",
+            "display_name": "Live Stream Capture",
+            "storage_path": null,
+            "is_default": true
+        }
+    ],
+    "device_connections": [
+        {
+            "display_name": "Serial Port",
+            "value": 1,
+            "is_default": true,
+            "serial_port_configuration": {
+                "baud": 460800,
+                "stop_bits": 1,
+                "parity": 0,
+                "handshake": 0,
+                "max_live_sample_rate": 16001
+            }
+        },
+        {
+            "display_name": "Wi-Fi",
+            "value": 2,
+            "is_default": false,
+            "wifi_configuration": {
+                "max_live_sample_rate": 16001
+            }
+        },
+        {
+            "display_name": "Bluetooth-LE",
+            "value": 0,
+            "is_default": false,
+            "bluetooth_le_configuration": {
+                "uuid_service": "16480000-0525-4ad5-b4fb-6dd83f49546b",
+                "uuid_sensor_data_out": "16480002-0525-4ad5-b4fb-6dd83f49546b",
+                "uuid_device_configuration": "16480001-0525-4ad5-b4fb-6dd83f49546b",
+                "max_live_sample_rate": 201
+            }
+        }
+    ],
+    "capture_sources": [
+        {
+            "name": "Motion",
+            "part": "Default",
+            "sample_rates": [
+                400,
+                200,
+                100,
+                50
+            ],
+            "sensors": [
+                {
+                    "is_default": true,
+                    "column_count": 3,
+                    "column_suffixes": [
+                        "X",
+                        "Y",
+                        "Z"
+                    ],
+                    "type": "Accelerometer",
+                    "parameters": [],
+                    "sensor_id": 1229804865,
+                    "can_live_stream": true
+                },
+                {
+                    "is_default": true,
+                    "column_count": 3,
+                    "column_suffixes": [
+                        "X",
+                        "Y",
+                        "Z"
+                    ],
+                    "type": "Gyroscope",
+                    "parameters": [],
+                    "can_live_stream": true
+                }
+            ],
+            "sensor_combinations": null
+        },
+        {
+            "name": "Audio",
+            "part": "Default",
+            "sample_rates": [
+                16000
+            ],
+            "sensors": [
+                {
+                    "is_default": true,
+                    "column_count": 1,
+                    "column_suffixes": [
+                        ""
+                    ],
+                    "type": "Microphone",
+                    "parameters": [],
+                    "can_live_stream": true
+                }
+            ],
+            "sensor_combinations": null
+        }
+    ],
+    "is_little_endian": true
+}
