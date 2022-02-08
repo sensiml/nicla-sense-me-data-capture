@@ -5,7 +5,7 @@
     "plugin_developer": "Arduino",
     "firmware_download_links": [
         {
-            "title": "Data Collection Firmware Documentation",
+            "title": "Data Collection Firmware",
             "description": "SensiML documentation for building data collection and recognition firmware",
             "link": "https://sensiml.com/documentation/firmware/arduino-nicla-sense-me/arduino-nicla-sense-me.html"
         }
