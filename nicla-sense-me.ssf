@@ -1,6 +1,6 @@
 {
     "uuid": "00000000-0000-0000-0000-000000000000",
-    "device_name": "Nicla Sense ME",
+    "device_name": "Nicla Sense ME Custom",
     "device_manufacturer": "Arduino",
     "plugin_developer": "Arduino",
     "firmware_download_links": [
@@ -75,20 +75,6 @@
                         "Z"
                     ],
                     "type": "Gyroscope"
-                }
-            ]
-        },
-        {
-            "name": "Audio",
-            "part": "Default",
-            "sample_rates": [
-                16000
-            ],
-            "sensors": [
-                {
-                    "is_default": true,
-                    "column_count": 1,
-                    "type": "Microphone"
                 }
             ]
         }
