@@ -15,3 +15,5 @@ Documentation for using this firmware is provided at [SensiML's documentation si
 ## Known Issues
 
 - BLE is limited to 100Hz or lower for IMU due to throughput issues.
+- The current PlatformIO codebase has a bug in .platformio\packages\framework-arduino-mbed\libraries\Nicla_System\src\Nicla_System.cpp that causes crashes.  There is a fixed version of this module in the Extras folder.
+
