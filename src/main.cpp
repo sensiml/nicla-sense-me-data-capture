@@ -6,7 +6,7 @@
 */
 
 #include "Arduino.h"
-#include "sensor_stream.h"
+#include "../include/sensor_stream.h"
 
 #include "Arduino_BHY2.h"
 #include "Nicla_System.h"   //must be placed after "ArduinoJSon.h"

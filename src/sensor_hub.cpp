@@ -1,6 +1,6 @@
 #include "Arduino.h"
 
-#include "sensor_stream.h"
+#include "../include/sensor_stream.h"
 
 #include "Arduino_BHY2.h"
 #if ENABLE_ACCEL
