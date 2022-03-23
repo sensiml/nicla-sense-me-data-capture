@@ -4,16 +4,15 @@ This provides a [PlatformIO](https://platformio.org/) project to flash the Ardui
 
 This code is meant as a reference code for setting up data capture with any Arduino Device. This firmware collects data from the BHI260AP smart sensor.
 
-Documentation for using this firmware is provided at [SensiML's documentation site](https://sensiml.com/documentation/firmware/arduino-nano33/arduino-nano33.html). The process for Nano33 and Nicla Sense ME are identical, aside from environment names.
+Documentation for using this firmware is provided at [SensiML's documentation site](https://sensiml.com/documentation/firmware/arduino-nicla-sense-me/arduino-nicla-sense-me.html). The process for Nano33 and Nicla Sense ME are identical, aside from environment names.
 
-## Requirements for building
+## Requirements
 
 - PlatformIO IDE (or plugin for your favorite IDE, command line interface)
 - Arduino Nicla Sense ME
-- Windows Computer for Data Capture Lab
+- SensiML Data Capture Lab (Windows)
 
 ## Known Issues
 
 - BLE is limited to 100Hz or lower for IMU due to throughput issues.
 - The current PlatformIO codebase has a bug in .platformio\packages\framework-arduino-mbed\libraries\Nicla_System\src\Nicla_System.cpp that causes crashes.  There is a fixed version of this module in the Extras folder.
-
