@@ -1,8 +1,6 @@
-#include "Arduino.h"
 
-#include "../include/sensor_stream.h"
+#include "../include/sensor_hub.h"
 
-#include "Arduino_BHY2.h"
 #if ENABLE_ACCEL
 SensorXYZ accel(SENSOR_ID_ACC_RAW);
 #endif
@@ -27,15 +25,25 @@ Sensor gas(SENSOR_ID_GAS);
 
 uint16_t actual_odr;
 
+void setLedColor(uint32_t color)
+{
+    nicla::leds.setColor((RGBColors)color);
+}
+
+void ledOff()
+{
+    setLedColor(off);
+}
+
 #if ENABLE_ACCEL || ENABLE_GYRO || ENABLE_MAG || ENABLE_TEMP || ENABLE_HUMID || ENABLE_BARO || ENABLE_GAS
 int16_t sensorDataCol[MAX_SAMPLES_PER_PACKET * MAX_NUMBER_OF_COLUMNS];
 
-int16_t* get_sensor_data_buffer()
+int16_t *get_sensor_data_buffer()
 {
     return &sensorDataCol[0];
 }
 
-int setup_sensors(JsonDocument& config_message, int column_start)
+int setup_sensors(JsonDocument &config_message, int column_start)
 {
     int column_index = column_start;
     // Set units.
@@ -46,29 +54,30 @@ int setup_sensors(JsonDocument& config_message, int column_start)
     config_message["column_location"]["AccelerometerX"] = column_index++;
     config_message["column_location"]["AccelerometerY"] = column_index++;
     config_message["column_location"]["AccelerometerZ"] = column_index++;
-    actual_odr                                          = ODR_ACC;
-    config_message["sample_rate"]                       = actual_odr;
+    actual_odr = ODR_ACC;
+    config_message["sample_rate"] = actual_odr;
 
 #elif (ENABLE_ACCEL && ENABLE_GYRO)
     accel.configure(ODR_ACC, 0);
+    accel.setRange(2);
     gyro.configure(ODR_GYR, 0);
-    actual_odr                                          = ODR_ACC;
+    actual_odr = ODR_ACC;
 #if CFG_IMITATE_NANO33BLE
-    config_message["sample_rate"]                       = 119;
+    config_message["sample_rate"] = 119;
 #else
-    config_message["sample_rate"]                       = actual_odr;
+    config_message["sample_rate"] = actual_odr;
 #endif
     config_message["column_location"]["AccelerometerX"] = column_index++;
     config_message["column_location"]["AccelerometerY"] = column_index++;
     config_message["column_location"]["AccelerometerZ"] = column_index++;
-    config_message["column_location"]["GyroscopeX"]     = column_index++;
-    config_message["column_location"]["GyroscopeY"]     = column_index++;
-    config_message["column_location"]["GyroscopeZ"]     = column_index++;
-    actual_odr                                          = ODR_GYR;
-#else  // gyro only
+    config_message["column_location"]["GyroscopeX"] = column_index++;
+    config_message["column_location"]["GyroscopeY"] = column_index++;
+    config_message["column_location"]["GyroscopeZ"] = column_index++;
+    actual_odr = ODR_GYR;
+#else // gyro only
     gyro.configure(ODR_GYR, 0);
-    actual_odr                                      = ODR_GYR;
-    config_message["sample_rate"]                   = actual_odr;
+    actual_odr = ODR_GYR;
+    config_message["sample_rate"] = actual_odr;
     config_message["column_location"]["GyroscopeX"] = column_index++;
     config_message["column_location"]["GyroscopeY"] = column_index++;
     config_message["column_location"]["GyroscopeZ"] = column_index++;
@@ -76,8 +85,8 @@ int setup_sensors(JsonDocument& config_message, int column_start)
 
 #if ENABLE_MAG
     mag.configure(ODR_MAG, 0);
-    actual_odr                                      = ODR_MAG;
-    config_message["sample_rate"]                   = actual_odr;
+    actual_odr = ODR_MAG;
+    config_message["sample_rate"] = actual_odr;
     config_message["column_location"]["MagnetometerX"] = column_index++;
     config_message["column_location"]["MagnetometerY"] = column_index++;
     config_message["column_location"]["MagnetometerZ"] = column_index++;
@@ -85,13 +94,12 @@ int setup_sensors(JsonDocument& config_message, int column_start)
 
 #if ENABLE_TEMP
     mag.configure(ODR_TEMP, 0);
-    actual_odr                                      = ODR_TEMP;
-    config_message["sample_rate"]                   = actual_odr;
+    actual_odr = ODR_TEMP;
+    config_message["sample_rate"] = actual_odr;
     config_message["column_location"]["MagnetometerX"] = column_index++;
     config_message["column_location"]["MagnetometerY"] = column_index++;
     config_message["column_location"]["MagnetometerZ"] = column_index++;
 #endif
-
 
     return column_index;
 }
